@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const combinedWeight = confirmedElements.reduce((sum, el) => sum + el.weight, 0).toFixed(4);
 
                     resultDiv.innerHTML = `
-                    To find the result, you need to add the atomic number of the first element to the atomic number of the second element. Then, you should add the atomic weight of the first element to the atomic weight of the second element. The final result is the sum of these four values combined and the result is: ${confirmedElements.map(el => el.symbol).join(' + ')} = 
+                   The sum of the atomic number and the atomic weight of the two elements you selected is... ${confirmedElements.map(el => el.symbol).join(' + ')} = 
                     <span class="highlight">Atomic Number: ${combinedNumber}</span> & 
                     <span class="highlight">Atomic Weight: ${combinedWeight}</span>
                 `;
