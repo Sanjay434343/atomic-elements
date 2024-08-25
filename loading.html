@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            border: 0;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        :root {
+            --hue: 223;
+            --bg: #0e0b0b3f;
+            --fg: #f4f1f1;
+            --dot-a-color: #f53d3d; /* Red */
+            --dot-b-color: #3d7bf5; /* Blue */
+            --dot-c-color: #3df55e; /* Green */
+            --dot-d-color: #f5e03d; /* Yellow */
+            --trans-dur: 0.3s;
+            font-size: calc(14px + (30 - 14) * (100vw - 280px) / (3840 - 280));
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            display: flex;
+            font: 1em/1.5 sans-serif;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            transition: background-color var(--trans-dur), color var(--trans-dur);
+            backdrop-filter: blur(10px);
+            
+        }
+        
+        .pl {
+            perspective: 18em;
+            position: relative;
+            width: 9em;
+            height: 9em;
+            transform-style: preserve-3d;
+        }
+        
+        .pl__dot {
+            animation-duration: 3s;
+            animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+            animation-iteration-count: infinite;
+            border-radius: 50%;
+            position: absolute;
+            width: 3em;
+            height: 3em;
+        }
+        
+        .pl__dot--a {
+            animation-name: dot-a;
+            background-color: var(--dot-a-color);
+            box-shadow: -0.5em -0.5em 1em #910808 inset, 0.125em 0.125em 0.25em var(--dot-a-color) inset, -0.25em -0.25em 0.75em 0.75em #f20d0d inset, 0.75em 0.75em 0.75em rgba(14, 11, 11, 0.7);
+            top: calc(50% - 1.5em);
+            left: calc(50% - 1.5em);
+        }
+        
+        .pl__dot--b {
+            animation-name: dot-b;
+            background-color: var(--dot-b-color);
+            box-shadow: -0.5em -0.5em 1em #001c56 inset, 0.125em 0.125em 0.25em var(--dot-b-color) inset, -0.25em -0.25em 0.75em 0.75em #001c56 inset, 0.75em 0.75em 0.75em rgba(14, 11, 11, 0.7);
+            top: calc(50% - 1.5em);
+            left: calc(50% - 1.5em);
+        }
+        
+        .pl__dot--c {
+            animation-name: dot-c;
+            background-color: var(--dot-c-color);
+            box-shadow: -0.5em -0.5em 1em #2b7a40 inset, 0.125em 0.125em 0.25em var(--dot-c-color) inset, -0.25em -0.25em 0.75em 0.75em #2b7a40 inset, 0.75em 0.75em 0.75em rgba(14, 11, 11, 0.7);
+            top: calc(50% - 1.5em);
+            left: calc(50% - 1.5em);
+        }
+        
+        .pl__dot--d {
+            animation-name: dot-d;
+            background-color: var(--dot-d-color);
+            box-shadow: -0.5em -0.5em 1em #c2b510 inset, 0.125em 0.125em 0.25em var(--dot-d-color) inset, -0.25em -0.25em 0.75em 0.75em #c2b510 inset, 0.75em 0.75em 0.75em rgba(14, 11, 11, 0.7);
+            top: calc(50% - 1.5em);
+            left: calc(50% - 1.5em);
+        }
+        
+        /* Animations */
+        @keyframes dot-a {
+            from {
+                transform: rotateY(0) rotateZ(0) translateX(-100%) rotateY(0) rotateZ(0);
+            }
+            50% {
+                transform: rotateY(1turn) rotateZ(0) translateX(-100%) rotateY(-1turn) rotateZ(0);
+            }
+            to {
+                transform: rotateY(1turn) rotateZ(-1turn) translateX(-100%) rotateY(-1turn) rotateZ(1turn);
+            }
+        }
+        
+        @keyframes dot-b {
+            from {
+                transform: rotateY(0) rotateZ(0) translateX(100%) rotateY(0) rotateZ(0);
+            }
+            50% {
+                transform: rotateY(1turn) rotateZ(0) translateX(100%) rotateY(-1turn) rotateZ(0);
+            }
+            to {
+                transform: rotateY(1turn) rotateZ(-1turn) translateX(100%) rotateY(-1turn) rotateZ(1turn);
+            }
+        }
+        
+        @keyframes dot-c {
+            from {
+                transform: rotateZ(0) rotateX(0) translateY(-100%) rotateZ(0) rotateX(0);
+            }
+            50% {
+                transform: rotateZ(-1turn) rotateX(0) translateY(-100%) rotateZ(1turn) rotateX(0);
+            }
+            to {
+                transform: rotateZ(-1turn) rotateX(1turn) translateY(-100%) rotateZ(1turn) rotateX(-1turn);
+            }
+        }
+        
+        @keyframes dot-d {
+            from {
+                transform: rotateZ(0) rotateX(0) translateY(100%) rotateZ(0) rotateX(0);
+            }
+            50% {
+                transform: rotateZ(-1turn) rotateX(0) translateY(100%) rotateZ(1turn) rotateX(0);
+            }
+            to {
+                transform: rotateZ(-1turn) rotateX(1turn) translateY(100%) rotateZ(1turn) rotateX(-1turn);
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="pl">
+        <div class="pl__dot pl__dot--a"></div>
+        <div class="pl__dot pl__dot--b"></div>
+        <div class="pl__dot pl__dot--c"></div>
+        <div class="pl__dot pl__dot--d"></div>
+    </div>
+</body>
+</html>

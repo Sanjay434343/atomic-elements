@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Chemistry Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Modal Styles */
+        .modal {
+            
+                display: flex;
+                align-items: center; /* Center vertically */
+                justify-content: center; /* Center horizontally */
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto; /* Scroll if content overflows */
+                background-color: rgba(0, 0, 0, 0.4); /* Background color with opacity */
+                backdrop-filter: blur(10px);
+            border-radius: 30px;
+                
+            
+        }
+        .modal-content {
+            display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
+            background-color: #ff96a91d;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            height: 50%;
+            text-align: center;
+            border: 3px dashed white;
+            border-radius: 30px;
+          
+
+        }
+        .close {
+            border-radius: 15px;
+            background-color: #ff96a91d;
+            padding: 10px 10px; 
+            color: #ffffff;
+            float: right;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px dashed white;
+        }
+        .close:hover,
+        .close:focus {
+            color: rgb(190, 190, 190);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .loading {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 9999; /* Ensure it's on top of everything else */
+            left: 0;
+            top: 0;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            background: rgba(0, 0, 0, 0); /* Slightly opaque background */
+            color: #fff;
+            text-align: center;
+            line-height: 100vh; /* Center text vertically */
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Chemistry Elements</h1>
+        <div class="periodic-table">
+            <!-- Element cards will be added here dynamically -->
+        </div>
+        <div id="dropZone" class="drop-zone">
+            <p>Drop here</p>
+        </div>
+        <button id="confirmButton" class="confirm-button">Confirm</button>
+        <button id="clearButton">Clear</button>
+
+        <!-- Modal for displaying results -->
+        <div id="resultModal" class="modal">
+            <div class="modal-content">
+                <p class="close">Close</p>
+                <div id="result"></div>
+            </div>
+        </div>
+
+        <!-- Loading animation -->
+        <iframe id="loading" class="loading" src="loading.html">Loading...</iframe>
+
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

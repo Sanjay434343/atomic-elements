@@ -1,0 +1,241 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a2e;
+    color: #fff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensure they cover full height */
+    width: 100%; /* Ensure they cover full width */
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 2400px; /* Increased width */
+    padding: 20px; /* Adjust padding for responsiveness */
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent horizontal scrolling */
+    margin-top: -30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #e94560;
+    text-shadow: 0 0 10px #e94560;
+    text-align: center;
+}
+
+.periodic-table {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Adjust for responsiveness */
+    gap: 5px;
+    margin-bottom: 30px;
+    perspective: 10000px;
+    overflow: hidden; /* Prevent scrolling */
+    white-space: nowrap; /* Ensure elements stay in a single line */
+    width: 100%;
+}
+
+.element-card {
+    width: 60px; /* Adjusted size */
+    height: 60px; /* Adjusted size */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden; /* Ensure no overflow within the card */
+}
+
+.element-card:hover {
+    transform: translateY(-10px) rotateX(15deg) rotateY(15deg);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+.element-symbol {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.element-number {
+    font-size: 0.8rem;
+    color: #ffde7d;
+}
+
+.element-weight {
+    font-size: 0.6rem;
+    color: #ffde7d;
+}
+
+.drop-container {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px dashed #e94560;
+    border-radius: 15px;
+    text-align: center;
+    width: 100%;
+    max-width: 1200px; /* Increased width */
+    backdrop-filter: blur(5px);
+    box-sizing: border-box;
+}
+
+.drop-zone {
+    width: 100%; /* Adjust to full width */
+    height: 100px;
+    border: 2px dashed #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    border-radius: 30px;
+    background-color: #ff798f26;
+}
+
+.element-card.dragging {
+    opacity: 0.5;
+}
+
+.plus-symbol {
+    margin: 0 5px;
+    font-size: 24px;
+    color: #ededed;
+}
+
+#result {
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin: 0; /* Remove margin to be fully centered */
+    border: none;
+    border-radius: 8px;
+    background-color: #f9f9f900;
+    max-width: 90%;
+}
+
+.confirm-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ff798f26;
+    border: 1px dashed white;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+#clearButton{
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ff798f26;
+    border: 1px dashed white;
+    color: white;
+    border-radius: 10px;
+    margin-top: -1px;
+}
+
+/* 3D Background Shapes */
+body::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    background: rgba(233, 69, 96, 0.3);
+    filter: blur(100px);
+    border-radius: 50%;
+    animation: rotate 10s infinite linear;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 222, 125, 0.3);
+    filter: blur(100px);
+    border-radius: 50%;
+    animation: rotate-reverse 15s infinite linear;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-reverse {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .periodic-table {
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* Adjust for responsiveness */
+    }
+    .drop-container {
+        width: 90%;
+        max-width: none;
+    }
+}
+
+.element-card.dragging {
+    opacity: 0.5; /* Or other visual effect to show it's being dragged */
+}
+
+
+
+
+
+.highlight {
+    font-weight: bold;
+    color: #ff4500; /* You can choose any color that fits your design */
+    background-color: #ffffe0; /* Light yellow background for contrast */
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
